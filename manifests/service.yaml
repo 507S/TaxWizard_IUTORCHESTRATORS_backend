@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-auth
-  namespace: namespace-workflow-1699033509574
+  name: orchestrators-backend
+  namespace: namespace-workflow-1699043398582
 spec:
   type: LoadBalancer
   selector:
-    app: test-auth
+    app: orchestrators-backend
   ports:
     - protocol: TCP
       port: 5001
