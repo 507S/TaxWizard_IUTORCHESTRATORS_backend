@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     container: node:20-alpine
     steps:
-      - run: cd .. && npm test
+      - run: cd .. && cd .. && npm test
   
