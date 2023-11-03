@@ -11,21 +11,7 @@ jobs:
       - run: npm --version
       - uses: actions/checkout@v3
       - run: npm install
-
-  test-job:
-    runs-on: ubuntu-latest
-    container: node:20-alpine
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2  # Use v2 for more control over the working directory
-      - run : ls 
-      - name: Change to the 'src' directory
-        run: cd src
-
-      - name: Install npm dependencies
-        run: npm install
-
-      - name: Run npm test from 'src'
-        run: npm test
+      - run: npm build
+      - run: npm test
      
   
