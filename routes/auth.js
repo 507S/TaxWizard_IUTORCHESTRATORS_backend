@@ -198,7 +198,7 @@ routers.post('/verifyOTP', async (req, res) => {
 );
 
 // route to recover password by sending otp
-app.post('/change-password', async (req, res) => {
+routers.post('/change-password', async (req, res) => {
     const { email,newPassword } = req.body;
   
     try {
