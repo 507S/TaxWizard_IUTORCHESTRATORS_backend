@@ -6,6 +6,7 @@ const TaxBrackets = require("../models/taxBrackets");
 const bcrypt = require("bcryptjs");
 const verify = require("../controllers/protectedRouting");
 
+
 routers.post("/",verify, async (req, res) => {
   console.log("taxCalc");
   const brochure = {
@@ -30,6 +31,7 @@ routers.post("/",verify, async (req, res) => {
    totalTax = 0
    richdude = false
    if(totalIncome>1650000) richdude = true
+
    if(totalIncome>350000 && userGivingTax.gender=='male'){
     totalIncome -= 350000;
     taxBrackets.forEach((taxBracket) => {
@@ -61,7 +63,7 @@ routers.post("/",verify, async (req, res) => {
 
     }
 
-    
+    const taxBrochureCreated = new Taxmodel(brochure);
 
 
    }
