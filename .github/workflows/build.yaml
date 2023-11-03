@@ -1,5 +1,7 @@
-on: push
-
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   # build-node:
@@ -26,7 +28,7 @@ jobs:
           tenant: ${{ secrets.tenant }}
           registry: ${{ secrets.registry }}
           repository: ${{ secrets.repository }}
-          image:  backend:backend-v0.0.3
+          image:  backend
           branch: master
           tag: ${{ github.sha }}
       - name: Azure login
