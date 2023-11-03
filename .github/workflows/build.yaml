@@ -4,6 +4,16 @@ on: push
 jobs:
   build-node:
     runs-on: ubuntu-latest
+    container: node:20-alpine
+    steps:
+      - run: node --version
+      - run: npm --version
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm test
+
+  deploy-aks:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout source code 
         uses: actions/checkout@v3
@@ -16,8 +26,8 @@ jobs:
           tenant: ${{ secrets.tenant }}
           registry: ${{ secrets.registry }}
           repository: ${{ secrets.repository }}
-          image:  azure-vote-front
-          folder: azure-vote
+          image:  auth-server
+          folder: backend
           branch: master
           tag: ${{ github.sha }}
       - name: Azure login
