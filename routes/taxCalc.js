@@ -18,6 +18,7 @@ routers.post("/",verify, async (req, res) => {
     userID: req.user._id,
     userName: req.user.name,
     userEmail: req.user.email,
+    totalIncome: req.body.totalIncome,
   };
   userGivingTax = await Usermodel.findById(req.user._id);
   try {

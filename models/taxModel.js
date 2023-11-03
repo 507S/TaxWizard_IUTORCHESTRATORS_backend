@@ -34,6 +34,10 @@ const taxBrochureSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  totalIncome: {
+    type: Number,
+    
+  },
 });
 
 const TaxBrochure = mongoose.model("TaxBrochure", taxBrochureSchema);
