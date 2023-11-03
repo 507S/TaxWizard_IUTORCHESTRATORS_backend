@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const taxBracket = new mongoose.Schema({
-  amountGreaterThen: { type: Number, required: true },
-  amountLessThen: { type: Number, required: true },
+  highPoint: { type: Number, required: true },
+  lowPoint: { type: Number, required: true },
   percentage: {
     type: String,
     required: true,

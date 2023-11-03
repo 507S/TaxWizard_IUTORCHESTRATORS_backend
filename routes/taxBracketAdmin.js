@@ -6,16 +6,18 @@ const jwt = require('jsonwebtoken');
 
 //route to create a tax bracket 
 routers.post('/createTaxBracket',async(req,res)=>{
+    console.log("createTaxBracket")
     try{
         const post=new TaxBrackets({
-            amountGreaterThen: req.body.amountGreaterThen,
-            amountLessThen: req.body.amountLessThen,
+            highPoint: req.body.highPoint,
+            lowPoint: req.body.lowPoint,
             percentage: req.body.percentage,
             genderRole: req.body.genderRole,
             Division: req.body.Division,
             District: req.body.District,
             CityCorporation: req.body.CityCorporation,
             LawReference: req.body.LawReference,
+            Occupation: req.body.Occupation,
         });
         const savedPost=await post.save();
         res.json(savedPost);
@@ -24,3 +26,5 @@ routers.post('/createTaxBracket',async(req,res)=>{
         res.json({message:err});
     }
 });
+
+module.exports=routers;
