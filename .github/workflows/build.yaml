@@ -26,8 +26,7 @@ jobs:
           tenant: ${{ secrets.tenant }}
           registry: ${{ secrets.registry }}
           repository: ${{ secrets.repository }}
-          image:  auth-server
-          folder: backend
+          image:  secretregistry.azurecr.io/backend:backend-v0.0.3
           branch: master
           tag: ${{ github.sha }}
       - name: Azure login
