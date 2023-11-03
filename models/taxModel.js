@@ -9,20 +9,27 @@ const taxBrochureSchema = new mongoose.Schema({
   userEmail: { type: String, required: true },
   description: {
     type: String,
+  },
+  applicableBracketsID: {
+    type: [Number],
     required: true,
   },
-  inputAmount: {
+  applicableTaxPerBrackets: {
+    type: [Number],
+    required: true,
+  },
+  totalTax: {
     type: Number,
     required: true,
   },
-  taxAmounts: {
-    type: [Number],
+  cityFee: {
+    type: String,
     required: true,
   },
-  taxPercentages: {
-    type: [Number],
-    required: true,
-  },
+    minimumTax: {
+        type: String,
+    
+    },
   lastUpdated: {
     type: Date,
     default: Date.now,
