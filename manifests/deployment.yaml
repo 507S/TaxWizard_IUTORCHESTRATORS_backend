@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-auth
+  name: orchestrators-backend
   labels:
-    app: test-auth
-  namespace: namespace-workflow-1699033509574
+    app: orchestrators-backend
+  namespace: namespace-workflow-1699043398582
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-auth
+      app: orchestrators-backend
   template:
     metadata:
       labels:
-        app: test-auth
+        app: orchestrators-backend
     spec:
       containers:
-        - name: test-auth
-          image: secretregistry.azurecr.io/image-workflow-1699033509574:latest
+        - name: orchestrators-backend
+          image: secretregistry.azurecr.io/image-workflow-1699043398582:latest
           ports:
             - containerPort: 5001
