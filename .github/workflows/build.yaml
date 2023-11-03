@@ -16,9 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     container: node:20-alpine
     steps:
-      - run: pwd
-      - run: cd .. && cd ..
-      - run: pwd
-      - run: npm test
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Use v2 for more control over the working directory
+
+      - name: Change to the 'src' directory
+        run: cd src
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run npm test from 'src'
+        run: npm test
      
   
