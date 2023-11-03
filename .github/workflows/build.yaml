@@ -12,19 +12,27 @@ jobs:
       - run: npm install
       - run: npm test
 
-      - uses: Azure/k8s-deploy@v4
-          with:
-            resource-group: yourResourceGroup
-            name: yourClusterName
-            action: deploy
-            strategy: basic
+  deploy-aks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-            private-cluster: true
-            manifests: |
-                manifests/azure-vote-backend-deployment.yaml
-                manifests/azure-vote-backend-service.yaml
-                manifests/azure-vote-frontend-deployment.yaml
-                manifests/azure-vote-frontend-service.yaml
-            images: |
-                registry.azurecr.io/containername    
+      - name: Azure Login
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to AKS
+        uses: Azure/k8s-deploy@v1
+        with:
+          resource-group: hackWithAKS
+          name: ultimateAKS
+          action: deploy
+          strategy: basic
+          private-cluster: true
+          manifests: |
+            Deployment.yaml
+          images: |
+            secretregistry.azurecr.io/backend:backend-v0.0.3
     
