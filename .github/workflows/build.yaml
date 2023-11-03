@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v3
       - run: npm install
 
-jobs:
   test-job:
     runs-on: ubuntu-latest
     container: node:20-alpine
     steps:
       - run: node test
+  
