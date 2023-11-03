@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-auth
+  labels:
+    app: test-auth
+  namespace: namespace-workflow-1699033509574
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-auth
+  template:
+    metadata:
+      labels:
+        app: test-auth
+    spec:
+      containers:
+        - name: test-auth
+          image: secretregistry.azurecr.io/image-workflow-1699033509574:latest
+          ports:
+            - containerPort: 5001
