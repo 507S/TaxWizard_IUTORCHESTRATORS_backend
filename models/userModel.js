@@ -33,6 +33,12 @@ const UserSchema = mongoose.Schema({
     address:{
         type: String
     },
+    gender:{
+        type: String
+    },
+    friends:{
+        type: [String]
+    },
 
 });
 const users = new mongoose.model("users",UserSchema);

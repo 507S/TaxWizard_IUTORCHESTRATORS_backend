@@ -1,5 +1,5 @@
 {
-  "name": "blogapi_for_kernel",
+  "name": "Orchestrators_TaxWzard",
   "version": "1.0.0",
   "description": "Simple APIs for a simple Blog Site.",
   "main": "index.js",
@@ -27,7 +27,7 @@
     "jest-config": "^29.5.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.10.3",
-    "nodemailer": "^6.7.5",
+    "nodemailer": "^6.9.7",
     "nodemon": "^2.0.16",
     "spell-checker-js": "^1.2.6"
   },
