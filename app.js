@@ -27,6 +27,18 @@ app.use(function(req, res, next) {
 const authRoutes = require('./routes/auth');
 app.use('/auth',authRoutes);
 
+//admin module
+const adminRoutes = require('./routes/taxBracketAdmin');
+app.use('/admin',adminRoutes);
+
+//tax calculation module
+const taxCalcRoutes = require('./routes/taxCalc');
+app.use('/taxCalc',taxCalcRoutes);
+
+//user profile module
+const userProfileRoutes = require('./routes/userProfileRoutes');
+app.use('/userProfile',userProfileRoutes);
+
 
 
 const connectionParams={
