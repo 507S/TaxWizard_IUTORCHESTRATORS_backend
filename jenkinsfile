@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    // tools{
+    //     nodejs 'salmans-nodejs'
+    // }
+    
+    stages {
+        stage('Cloning git') {
+            steps {
+                git 'https://github.com/507S/TaxWizard_IUTORCHESTRATORS_backend.git'
+            }
+        }
+
+        
+        stage('Build') {
+             steps {
+                nodejs(nodeJSInstallationName: 'nodejs') {
+                    sh 'npm install'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                nodejs(nodeJSInstallationName: 'nodejs') {
+                    sh 'npm test'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Add deployment steps here, e.g., deploying to a server, container, or cloud platform
+                // You might use tools like Docker, PM2, or custom deployment scripts
+                script{
+                    app = docker.build("secretregistry.azurecr.io/backend:backend-v0.0.3")
+                }
+            }
+        }
+    }
+}

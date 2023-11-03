@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-//logging in
+
 routers.post('/login',async(req,res)=>{
     try{
         //console.log(req.body);
@@ -198,7 +198,7 @@ routers.post('/verifyOTP', async (req, res) => {
 );
 
 // route to recover password by sending otp
-app.post('/change-password', async (req, res) => {
+routers.post('/change-password', async (req, res) => {
     const { email,newPassword } = req.body;
   
     try {
