@@ -51,7 +51,7 @@ jobs:
         with:
           namespace: 'default'
           manifests: |
-             Deployment.yaml
+             deploy.yaml
           images: 'secretregistry.azurecr.io/backend:backend-v0.0.3'
           pull-images: false 
     
