@@ -35,6 +35,10 @@ app.use('/admin',adminRoutes);
 const taxCalcRoutes = require('./routes/taxCalc');
 app.use('/taxCalc',taxCalcRoutes);
 
+//user profile module
+const userProfileRoutes = require('./routes/userProfileRoutes');
+app.use('/userProfile',userProfileRoutes);
+
 
 
 const connectionParams={
