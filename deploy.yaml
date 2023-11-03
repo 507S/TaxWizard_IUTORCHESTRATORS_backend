@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authserver
+  template:
+    metadata:
+      labels:
+        app: authserver
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: authserver
+        image: authserver
+        env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "yes"
+        ports:
+        - containerPort: 5001
+          name: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authserver
+spec:
+  ports:
+  - port: 5001
+  selector:
+    app: authserver
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authserver
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: authserver
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: authserver
+        image: secretregistry.azurecr.io/backend:backend-v0.0.3
+        ports:
+        - containerPort: 5001
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+        env:
+        - name: REDIS
+          value: "authserver"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authserver
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5001
+  selector:
+    app: authserver
