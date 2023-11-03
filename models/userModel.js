@@ -35,7 +35,10 @@ const UserSchema = mongoose.Schema({
     },
     gender:{
         type: String
-    }
+    },
+    friends:{
+        type: [String]
+    },
 
 });
 const users = new mongoose.model("users",UserSchema);
