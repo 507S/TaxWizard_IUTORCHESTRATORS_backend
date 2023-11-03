@@ -64,6 +64,7 @@ routers.post("/",verify, async (req, res) => {
     }
 
     const taxBrochureCreated = new Taxmodel(brochure);
+    console.log(taxBrochureCreated);
 
 
    }
@@ -76,7 +77,8 @@ routers.post("/",verify, async (req, res) => {
         tax= Math.min(taxBracket.bracket,totalIncome) * (taxBracket.percentage)/100;
         totalIncome -= taxBracket.bracket;
         totalTax += tax;
-        applicableBracketsID.push(taxBracket._id);
+        brochure.applicableBracketsID.push(taxBracket._id);
+        brochure.applicableTaxPerBrackets.push(tax);
         
         }
     })
@@ -89,16 +91,20 @@ routers.post("/",verify, async (req, res) => {
     // if user's city corporation is Dhaka or Chattogram, then minimum 5000 taka tax
     if (userGivingTax.city == "Dhaka" || userGivingTax.city == "Chattogram") {
       totalTax = Math.max(totalTax, 5000);
+      brochure.cityFee = 'YES'
     }
     // if user's city corporation is not Dhaka or Chattogram but something else, then minimum 4000 taka tax
     else if(userGivingTax.CityCorporation != null){
       totalTax = Math.max(totalTax, 4000);
+      brochure.cityFee = 'YES'
     }
     else {
         totalTax = Math.max(totalTax, 3000);
         brochure.minimumTax = 'YES'
     }
 
+    const taxBrochureCreated = new Taxmodel(brochure);
+    console.log(taxBrochureCreated);
     }
 
 
