@@ -6,6 +6,7 @@ const taxBrochureSchema = new mongoose.Schema({
     required: true,
   },
   userName: { type: String, required: true },
+  userEmail: { type: String, required: true },
   description: {
     type: String,
     required: true,

@@ -9,8 +9,8 @@ routers.post('/createTaxBracket',async(req,res)=>{
     console.log("createTaxBracket")
     try{
         const post=new TaxBrackets({
-            highPoint: req.body.highPoint,
-            lowPoint: req.body.lowPoint,
+            
+            bracket: req.body.bracket,
             percentage: req.body.percentage,
             genderRole: req.body.genderRole,
             Division: req.body.Division,
