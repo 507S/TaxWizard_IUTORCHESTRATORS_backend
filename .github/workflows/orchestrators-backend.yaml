@@ -14,6 +14,15 @@ env:
         manifests/deployment.yaml
         manifests/service.yaml
 jobs:
+  build-node:
+    runs-on: ubuntu-latest
+    container: node:20-alpine
+    steps:
+      - run: node --version
+      - run: npm --version
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm test
     buildImage:
         permissions:
             contents: read

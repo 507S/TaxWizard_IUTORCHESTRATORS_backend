@@ -17,7 +17,7 @@ mongoose.set('strictQuery', true);
 
 app.get('/', (req, res) => {
     res.send('Hello, World!').status(200);
-  });
+  });   
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:5001');
