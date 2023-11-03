@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: authserver
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       app: authserver
@@ -39,7 +39,7 @@ kind: Deployment
 metadata:
   name: authserver
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       app: authserver
