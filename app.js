@@ -39,6 +39,10 @@ app.use('/taxCalc',taxCalcRoutes);
 const userProfileRoutes = require('./routes/userProfileRoutes');
 app.use('/userProfile',userProfileRoutes);
 
+//friend request module
+const friendRequestRoutes = require('./routes/friendRequestRoutes');
+app.use('/friendRequest',friendRequestRoutes);
+
 
 
 const connectionParams={
