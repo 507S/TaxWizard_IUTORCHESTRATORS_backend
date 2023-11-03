@@ -45,7 +45,7 @@ const userProfileRoutes = require('./routes/userProfileRoutes');
 app.use('/userProfile',userProfileRoutes);
 
 //friend request module
-const friendRequestRoutes = require('./routes/friendRequestRoutes');
+const friendRequestRoutes = require('./routes/familyAdding');
 app.use('/friendRequest',friendRequestRoutes);
 
 
