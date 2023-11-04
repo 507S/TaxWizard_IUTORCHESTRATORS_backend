@@ -27,4 +27,35 @@ routers.post('/createTaxBracket',async(req,res)=>{
     }
 });
 
+// admin login
+routers.post('/login-admin',async(req,res)=>{
+    try{
+        //console.log(req.body);
+        const user = {
+            _id: process.env.ADMINID,
+        } 
+        if(res.body.id==user._id && req.body.password==process.env.ADMINPASSWORD){
+            
+                const token=jwt.sign({
+                    id:user._id,
+                    role:'admin'
+                },process.env.TOKEN,
+                {
+                    expiresIn: '1h',
+                    algorithm: 'HS256'
+                });
+                res.header('auth-token',token).send(token);
+                return res.json({status:'ok' , user:token });//user is the payload 
+            
+            
+        }
+        else {
+            return res.json({status:'error' , user:'error'}); //status is error and user is error means email id does not match
+        }
+    }
+    catch(err){
+
+    }
+});
+
 module.exports=routers;
