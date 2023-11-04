@@ -19,7 +19,7 @@ router.get('/profile/:id',verify, async (req, res) => {
 router.put('/profile/:id',verify, async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, {
-        
+      $set: req.body,       
     }, { new: true });
     res.status(200).json(user);
   } catch (err) {

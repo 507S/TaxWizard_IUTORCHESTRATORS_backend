@@ -4,6 +4,7 @@ const Usermodel = require('../models/userModel')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const OTPModel = require('../models/otpCache');
 require('dotenv').config();
 
 //logging in
@@ -128,7 +129,8 @@ routers.post('/isLoggedIn',async(req,res)=>{
 
 //get OTP for user
 routers.post('/getOTP', async (req, res) => {
-    const otp = Math.floor(Math.random() * (999999 - 100000) + 100000);
+    //generating a random 5 digit otp
+    const otp = Math.floor(1000 + Math.random() * 9000);
     try {
             const post = new OTPModel({
                 otp: otp,
@@ -179,6 +181,7 @@ routers.post('/verifyOTP', async (req, res) => {
                 res.json({ message: "OTP verified" });
                 otp.remove();
                 const validUser = await Usermodel.updateOne({email: req.body.email}, {$set: {verified: true}}) 
+                res.send(validUser);
                 // const mod = await ModeratorModel.findOne
                 //     ({ email: req.mod.email });
                 // mod.verified = true;
