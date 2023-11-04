@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // const spell = require('spell-checker-js')
-const port = 5001;
+const port = 5002;
 
 mongoose.set('strictQuery', true);
 
@@ -62,7 +62,7 @@ mongoose.connect(process.env.DB_CONNECTION,
 .catch(e=>console.log(e));
 
 //how do we start listening to the server
-app.listen(5001);
+app.listen(5002);
 // create a get route to welcome
 app.get('/',(req,res)=>{
     res.send('we are on home');

@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose the port your Express app will run on
-EXPOSE 5001
+EXPOSE 5002
 
 # Define the command to start your Express app
 CMD [ "npm", "start" ]
